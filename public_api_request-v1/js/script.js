@@ -4,7 +4,8 @@ let employees = [];
 const searchDiv = document.querySelector('.search-container');
 const urlAPI = `https://randomuser.me/api/?results=12&inc=name, picture,
 email, location, phone, dob &noinfo &nat=US`
-const gallery = document.querySelector('#gallery');
+const gallery = document.querySelector('.gallery');
+const body = document.querySelector('body');
 
 //Markup for the search box 
 const searchHtml = `
@@ -15,9 +16,28 @@ const searchHtml = `
 `;
 searchDiv.insertAdjacentHTML('beforeend', searchHtml);
 
-//Mark up for the gallery cards
-const galleryCard = `
-<div id="gallery" class="gallery">
+
+
+fetch(urlAPI)
+.then(res => res.json())
+.then(res => res.results)
+.then(displayEmployees)
+.catch(err => console.log(err))
+
+function displayEmployees(employeeData) {
+employees = employeeData;
+
+//This stores employee html as we create it.
+let employeeHTML = ''; 
+
+//this loops through all the employee info and adds it to the html for that person
+employees.forEach((employee, index) => {
+    let name = employee.name;
+    let email = employee.email;
+    let city = employee.location.city;
+    let picture = employee.picture;
+
+    employeeHTML += `
 <div class="card"> 
 <div class="card-img-container">
 <img class="card-img" src="https://placehold.it/90x90" alt="profile picture">
@@ -28,10 +48,13 @@ const galleryCard = `
 <p class="card-text cap">city, state</p>
 </div>
 </div>
-</div>
 `;
 
-gallery.insertAdjacentElement('beforeend', galleryCard);
+    })
+}
+
+
+
 
 
 

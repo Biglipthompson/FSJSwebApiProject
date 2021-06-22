@@ -37,7 +37,7 @@ employees.forEach((employee, index) => {
     let city = employee.location.city;
     let picture = employee.picture;
 
-    employeeHTML += `
+employeeHTML += `
 <div class="card"> 
 <div class="card-img-container">
 <img class="card-img" src="https://placehold.it/90x90" alt="profile picture">
@@ -49,9 +49,10 @@ employees.forEach((employee, index) => {
 </div>
 </div>
 `;
-
-    })
+    });
+    gallery.innerHTML = employeeHTML;
 }
+
 
 
 

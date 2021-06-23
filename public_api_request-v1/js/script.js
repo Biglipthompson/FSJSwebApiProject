@@ -24,12 +24,12 @@ const searchHtml = `
 `;
 searchDiv.insertAdjacentHTML('beforeend', searchHtml);
 
+//This is the function that I am using to display emplyees
 function displayEmployees(employeeData) {
-
 employees = employeeData;
 
 //This stores employee html as we create it.
-let employeeHTML = ''; 
+employeeHtml = ''; 
 
 //this loops through all the employee info and adds it to the html for that person
 employees.forEach((employee, index) => {
@@ -38,7 +38,8 @@ let email = employee.email;
 let city = employee.location.city;
 let picture = employee.picture;
 
-employeeHTML = `
+//Displays all the employees from the api to the html
+const employeeHtml = `
  <div class="card" data-index="${index}">
  <div class="card-img-container">
 <img class="card-img" src="${picture.large}" alt="profile picture"/>
@@ -50,10 +51,12 @@ employeeHTML = `
 </div>
 </div>
 `;
-gallery.insertAdjacentHTML("beforeend", employeeHTML);
+gallery.insertAdjacentHTML("beforeEnd", employeeHtml);
 })
 }
 
+
+//This function displays the modal of the employees
 function displayModal(index) {
     let { name, dob, phone, email, 
     location: {city, street, state, postcode
@@ -87,7 +90,7 @@ gallery.addEventListener('click', (e) => {
     } 
 });
 // gallery.addEventListener('click', () => {
-//     modalClose.className = 'hidden';
+//     gallery.classList.add('hidden');
 // });
 
 

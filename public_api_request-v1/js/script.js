@@ -26,6 +26,7 @@ searchDiv.insertAdjacentHTML('beforeend', searchHtml);
 
 //This is the function that I am using to display emplyees
 function displayEmployees(employeeData) {
+    
 employees = employeeData;
 
 //This stores employee html as we create it.
@@ -45,14 +46,17 @@ const employeeHtml = `
 <img class="card-img" src="${picture.large}" alt="profile picture"/>
 </div>
 <div class="card-info-container">
-<h2 class="name">${name.first} ${name.last}</h2>
+<h3 id="name" class="card-name cap">${name.first} ${name.last}</h3>
 <p class="card-text">${email}</p>
-<p class="card-text cap">${city.state}</p>
+<p class="card-text cap">${city}</p>
 </div>
+</div> 
 </div>
-`;
-gallery.insertAdjacentHTML("beforeEnd", employeeHtml);
-})
+
+`
+gallery.innerHTML = employeeHtml;
+
+});
 }
 
 

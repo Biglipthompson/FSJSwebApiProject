@@ -8,6 +8,7 @@ const gallery = document.querySelector('.gallery');
 // const body = document.querySelector('body');
 const modalClose = document.querySelectorAll('.modal-close-btn');
 const modalContainer = document.querySelector('.modal-container')
+const body =  document.querySelector('body');
 
 fetch(urlAPI)
 .then(res => res.json())
@@ -54,8 +55,7 @@ const employeeHtml = `
 </div>
 
 `
-gallery.innerHTML = employeeHtml;
-
+gallery.insertAdjacentHTML('beforeend',  employeeHtml);
 });
 }
 
@@ -68,7 +68,7 @@ function displayModal(index) {
     let date = new Date(dob.date);  
 
     const modalHtml = `
-    <img class="avatar" src="${picture.large}"/>
+    <img class="modal-img" src="${picture.large}"/>
     <div class="text-container">
     <h2 class="name">${name.first} ${name.last}</h2>
     <p class="email">${email}</p>
@@ -80,8 +80,8 @@ function displayModal(index) {
     </div>
 `;
 
-gallery.classList.remove("hidden");
-displayModal.innerHTML = modalHtml;
+// overlay.classList.remove("hidden");
+// modalContainer.innerHTML = modalHtml;
 }
 
 // This function checks if if the grid container itself was clicked or a child element 
@@ -93,7 +93,7 @@ gallery.addEventListener('click', (e) => {
         displayModal(index);
     } 
 });
-// gallery.addEventListener('click', () => {
+// modalClose.addEventListener('click', () => {
 //     gallery.classList.add('hidden');
 // });
 

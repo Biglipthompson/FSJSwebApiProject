@@ -83,8 +83,9 @@ const modalHtml = `
 </div>`;
 
 
-overlay.classList.remove("hidden");
-modalContainer.innerHTML = modalHtml;
+//Still working on this part of the code
+body.classList.remove("hidden");
+body.insertAdjacentHTML("beforeend", modalHtml);
 }
 
 // This function checks if if the grid container itself was clicked or a child element 

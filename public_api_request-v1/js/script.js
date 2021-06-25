@@ -67,21 +67,24 @@ function displayModal(index) {
     }, picture } = employees[index];
     let date = new Date(dob.date);  
 
-    const modalHtml = `
-    <img class="modal-img" src="${picture.large}"/>
-    <div class="text-container">
-    <h2 class="name">${name.first} ${name.last}</h2>
-    <p class="email">${email}</p>
-    <p class="address">${city}</p>
-    <hr />
-    <p>${phone}</p>
-    <p> ${street.name}, ${street.number} ${state} ${postcode}</p>
-    <p>Birthday:${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
-    </div>
-`;
+const modalHtml = `
+<div class="modal">
+<button type="button" id="gallery-btn" class="modal-close-btn"><strong>X</strong></button>
+<div class="modal-info-container">
+<img class="modal-img" src="${picture.large}"" alt="profile picture">
+<h3 id="name" class="modal-name cap">${name.first} ${name.last}</h3>
+<p class="modal-text">${email}</p>
+<p class="modal-text cap">${city}</p>
+<hr>
+<p class="modal-text">${phone}</p>
+<p class="modal-text">${street.name}, ${street.number} ${state} ${postcode}</p>
+<p class="modal-text">${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+</div>
+</div>`;
 
-// overlay.classList.remove("hidden");
-// modalContainer.innerHTML = modalHtml;
+
+overlay.classList.remove("hidden");
+modalContainer.innerHTML = modalHtml;
 }
 
 // This function checks if if the grid container itself was clicked or a child element 

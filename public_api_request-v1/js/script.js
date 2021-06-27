@@ -68,6 +68,7 @@ function displayModal(index) {
     let date = new Date(dob.date);  
 
 const modalHtml = `
+<div class="modal-container"> 
 <div class="modal">
 <button type="button" id="gallery-btn" class="modal-close-btn"><strong>X</strong></button>
 <div class="modal-info-container">
@@ -83,10 +84,11 @@ const modalHtml = `
 </div>`;
 
 
-//Still working on this part of the code
+// Still working on this part of the code
 body.classList.remove("hidden");
 body.insertAdjacentHTML("beforeend", modalHtml);
 }
+
 
 // This function checks if if the grid container itself was clicked or a child element 
 gallery.addEventListener('click', (e) => {

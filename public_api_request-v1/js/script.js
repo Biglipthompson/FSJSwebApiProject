@@ -4,11 +4,12 @@ let employees = [];
 const searchDiv = document.querySelector('.search-container');
 const urlAPI = `https://randomuser.me/api/?results=12&inc=name, picture,
 email, location, phone, dob &noinfo &nat=US`
-const gallery = document.querySelector('.gallery');
-// const body = document.querySelector('body');
-const modalClose = document.querySelectorAll('.modal-close-btn');
-const modalContainer = document.querySelector('.modal-container')
 const body =  document.querySelector('body');
+const gallery = document.querySelector('.gallery');
+const modal = document.querySelector('.modal');
+const modalClose = document.querySelector('.modal-close-btn');
+const modalContainer = document.querySelector('.modal-container');
+const modalBtnContainer = document.querySelector('.modal-btn-container');
 
 fetch(urlAPI)
 .then(res => res.json())
@@ -27,12 +28,9 @@ searchDiv.insertAdjacentHTML('beforeend', searchHtml);
 
 //This is the function that I am using to display emplyees
 function displayEmployees(employeeData) {
-    
 employees = employeeData;
-
 //This stores employee html as we create it.
 employeeHtml = ''; 
-
 //this loops through all the employee info and adds it to the html for that person
 employees.forEach((employee, index) => {
 let name = employee.name;
@@ -53,12 +51,9 @@ const employeeHtml = `
 </div>
 </div> 
 </div>
-
 `
 gallery.insertAdjacentHTML('beforeend',  employeeHtml);
-});
-}
-
+})}
 
 //This function displays the modal of the employees
 function displayModal(index) {
@@ -81,13 +76,23 @@ const modalHtml = `
 <p class="modal-text">${street.name}, ${street.number} ${state} ${postcode}</p>
 <p class="modal-text">${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
 </div>
+</div>
 </div>`;
 
-
-// Still working on this part of the code
 body.classList.remove("hidden");
 body.insertAdjacentHTML("beforeend", modalHtml);
 }
+
+const skipButtons = 
+`
+<!-- <div class="modal-btn-container">  -->
+<!-- <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
+<button type="button" id="modal-next" class="modal-next btn">Next</button> --> 
+<!-- </div>  -->
+`;
+modalBtnContainer.insertAdjacentHTML('beforeend', skipButtons);
+
+
 
 
 // This function checks if if the grid container itself was clicked or a child element 
@@ -99,9 +104,7 @@ gallery.addEventListener('click', (e) => {
         displayModal(index);
     } 
 });
-// modalClose.addEventListener('click', () => {
-//     gallery.classList.add('hidden');
-// });
+
 
 
 

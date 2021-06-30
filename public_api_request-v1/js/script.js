@@ -53,14 +53,14 @@ const employeeHtml = `
 </div>
 `
 gallery.insertAdjacentHTML('beforeend',  employeeHtml);
-})}
+})};
 
 //This function displays the modal of the employees
-function displayModal(index) {
-    let { name, dob, phone, email, 
-    location: {city, street, state, postcode
-    }, picture } = employees[index];
-    let date = new Date(dob.date);  
+function displayModal (index) {
+let { name, dob, phone, email, 
+location: {city, street, state, postcode
+}, picture } = employees[index];
+let date = new Date(dob.date);  
 
 const modalHtml = `
 <div class="modal-container"> 
@@ -89,19 +89,6 @@ body.classList.remove("hidden");
 body.insertAdjacentHTML("beforeend", modalHtml);
 }
 
-document.querySelector('#gallery').insertAdjacentHTML('afterend', modalHtml);
-
-
-modalClose.addEventListener ('click', () => {
-modalContainer.classList.add('hidden');
-})
-
-
-// modalBtnContainer.insertAdjacentHTML('beforeend', skipButtons);
-
-
-
-
 // This function checks if if the grid container itself was clicked or a child element 
 gallery.addEventListener('click', (e) => {
     if (e.target !== gallery) {
@@ -111,6 +98,7 @@ gallery.addEventListener('click', (e) => {
         displayModal(index);
     } 
 });
+
 
 
 

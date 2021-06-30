@@ -9,7 +9,7 @@ const gallery = document.querySelector('.gallery');
 const modal = document.querySelector('.modal');
 const modalClose = document.querySelector('.modal-close-btn');
 const modalContainer = document.querySelector('.modal-container');
-const modalBtnContainer = document.querySelector('.modal-btn-container');
+const skipBtnContainer = document.querySelector('.modal-btn-container');
 
 fetch(urlAPI)
 .then(res => res.json())
@@ -77,20 +77,27 @@ const modalHtml = `
 <p class="modal-text">${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
 </div>
 </div>
-</div>`;
+</div>
+<div class="modal-btn-container">  
+<button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
+<button type="button" id="modal-next" class="modal-next btn">Next</button>  
+</div>  
+`;
+
 
 body.classList.remove("hidden");
 body.insertAdjacentHTML("beforeend", modalHtml);
 }
 
-const skipButtons = 
-`
-<!-- <div class="modal-btn-container">  -->
-<!-- <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
-<button type="button" id="modal-next" class="modal-next btn">Next</button> --> 
-<!-- </div>  -->
-`;
-modalBtnContainer.insertAdjacentHTML('beforeend', skipButtons);
+document.querySelector('#gallery').insertAdjacentHTML('afterend', modalHtml);
+
+
+modalClose.addEventListener ('click', () => {
+modalContainer.classList.add('hidden');
+})
+
+
+// modalBtnContainer.insertAdjacentHTML('beforeend', skipButtons);
 
 
 

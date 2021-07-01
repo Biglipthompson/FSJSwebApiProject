@@ -121,7 +121,6 @@ header h1 {
     text-transform: capitalize;
 }
 
-
 /* ===================================== 
    Modal
 ======================================== */
@@ -199,6 +198,7 @@ header h1 {
 .modal-btn-container .btn {
     display: inline-block;
     cursor: pointer;
+    pointer-events: none;
     font-size: 0.85em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.9);

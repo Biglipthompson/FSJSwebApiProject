@@ -99,6 +99,12 @@ gallery.addEventListener('click', (e) => {
     } 
 });
 
+document.addEventListener('click', (e) => {
+if (e.target.className === 'modal-close-btn') {
+    document.querySelector('.modal-container').remove();
+    }
+})
+
 
 
 
